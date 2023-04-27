@@ -42,7 +42,10 @@ module.exports = {
 	},
 	update: async (req, res) => {
 		try {
-			await dataSource.getRepository(Wilder).update(req.body.id, req.body.newData)
+			const data = await dataSource.getRepository(Wilder)
+			const modifiedData = await req.body.city === '' ? {name: req.body.name, city: null} : {name: req.body.name, city : req.body.city}
+			
+			data.update(req.body.id, modifiedData)
 			res.send("Succesfully updated")
 		}
 		catch (err)  {

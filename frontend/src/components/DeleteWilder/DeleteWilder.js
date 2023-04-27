@@ -1,5 +1,6 @@
 import axios from 'axios';
 import PropTypes from 'prop-types'
+import styles from './DeleteWilder.module.css'
 
 const DeleteWilder	= ({id, refresh}) => { 
 	const remove = (e) => {
@@ -16,7 +17,10 @@ const DeleteWilder	= ({id, refresh}) => {
 }
 
 	return (
-		<button onClick={(e) => remove(e)}>Delete</button>
+		<div className={styles.container}>
+			<button onClick={(e) => remove(e)}>Delete</button>
+		</div>
+		
 	)
 }
 

@@ -3,9 +3,14 @@ import Skill from '../Skill/Skill';
 import styles from './Wilder.module.css'
 import DeleteWilder from '../DeleteWilder/DeleteWilder';
 import PropTypes from 'prop-types'
+import { useState } from 'react';
+import UpdateWilder from '../UpdateWilder/UpdateWilder';
 
 
 const Wilder = ({name, city, skills, id, refresh}) => {
+	const [showUpdate, setShowUpdate] = useState(false);
+
+
 	return (
 		<article className={styles.card}>
 			<img src={avatar} alt={`${name}'s avatar`}/>
@@ -21,6 +26,8 @@ const Wilder = ({name, city, skills, id, refresh}) => {
 			<ul className={styles.skills}>
 				{skills.map((skill, i) => <Skill key={i} name={skill.title} grade={skill.grade}/>)}
 			</ul>
+			<button onClick={(e)=> setShowUpdate(!showUpdate)}>Update</button>
+			{showUpdate && <UpdateWilder id={id} name={name} city={city} refresh={refresh}/>}
 			<DeleteWilder id={id} refresh={refresh}/>
 		</article>
 	)

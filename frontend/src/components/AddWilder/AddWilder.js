@@ -22,8 +22,8 @@ const AddWilder = ({refresh}) => {
 				.catch((err) => {
 					console.log(err);
 				})
-			}}>
-
+			}}
+		>
 			<label htmlFor="name">Name :</label>
 			<input 
 				type="text" 
@@ -33,7 +33,6 @@ const AddWilder = ({refresh}) => {
 				required 
 			/>
 			<br/>
-
 			<label htmlFor="city">City :</label>
 			<input 
 				type="text" 
