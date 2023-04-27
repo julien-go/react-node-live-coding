@@ -1,4 +1,5 @@
 import styles from './Skill.module.css'
+import PropTypes from 'prop-types'
 
 const Skill = ({name, grade}) => {
 	
@@ -8,6 +9,11 @@ const Skill = ({name, grade}) => {
 			<span className={styles.votes}>{grade}</span>
 		</li>
 	)
+}
+
+Skill.propTypes = {
+	name: PropTypes.string.isRequired,
+	grade: PropTypes.number.isRequired
 }
 
 export default Skill;

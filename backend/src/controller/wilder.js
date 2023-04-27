@@ -50,9 +50,10 @@ module.exports = {
 
 	},
 	delete: async (req, res) => {
+		console.log(req.params)
 
 		try {
-			await dataSource.getRepository(Wilder).delete(req.body)
+			await dataSource.getRepository(Wilder).delete(req.params)
 			res.send("Succesfully deleted")
 		}
 		catch (err)  {
