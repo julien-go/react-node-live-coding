@@ -7,7 +7,9 @@ module.exports = {
 	create: async (req, res) => {
 		try {
 			const data = await dataSource.getRepository(Wilder)
-			await data.save(req.body)
+			const wilder = await req.body.city === '' ? {name: req.body.name} : req.body
+			console.log(wilder)
+			await data.save(wilder)
 			res.send("Created")
 		}
 		catch (err)  {
@@ -22,9 +24,9 @@ module.exports = {
 			const wilders = await dataSource.getRepository(Wilder).find()
 
 			const data = wilders.map((wilder) => {
-				console.log(wilder)
+				// console.log(wilder)
 				const wilderGrades = grades.filter((grade) => grade.wilder.id === wilder.id);
-				console.log(wilderGrades)
+				// console.log(wilderGrades)
 				const wilderGradesLean = wilderGrades.map((el) => {
 					return {title: el.skill.name, grade: el.grade}
 				});
