@@ -20,7 +20,7 @@ const UpdateWilder = ({id, name, city, refresh, showUpdateHandler}) => {
 			<input type="text" id="name" name="name" defaultValue={name}/>
 			<label htmlFor="city">City</label>
 			<input type="text" id="city" name="city" defaultValue={city}/>
-			<button type="submit">Validate modification(s)</button>
+			<button type="submit">Validate</button>
 		</form>
 	)
 }

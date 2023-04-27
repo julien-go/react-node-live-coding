@@ -41,7 +41,7 @@ const AddWilder = ({refresh}) => {
 				onChange={(e) => setCity(e.target.value)} 
 			/>
 			<br/>
-			<input type="submit" value="Add Wilder" />
+			<button type="submit">Add Wilder</button >
 		</form>
 	)
 
