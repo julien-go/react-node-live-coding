@@ -1,0 +1,33 @@
+.body {
+	font-family: sans-serif;
+	color: #222;
+	margin: 0;
+  max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 24px;
+  }
+   
+  .container {
+	max-width: 800px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 24px;
+  }
+   
+  header {
+	background-color: #F76C6C;
+	color: #fff;
+  }
+   
+  footer {
+	border-top: 2px solid #F76C6C;
+  }
+
+  .card_row {
+    display: grid;
+    grid-template-columns: repeat(3, 32%);
+    justify-content: space-between;
+  }
+   
+   
