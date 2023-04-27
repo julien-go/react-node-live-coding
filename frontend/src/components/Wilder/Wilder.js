@@ -10,6 +10,10 @@ import UpdateWilder from '../UpdateWilder/UpdateWilder';
 const Wilder = ({name, city, skills, id, refresh}) => {
 	const [showUpdate, setShowUpdate] = useState(false);
 
+	const showUpdateHandler = () => {
+		setShowUpdate(!showUpdate)
+	}
+
 
 	return (
 		<article className={styles.card}>
@@ -26,9 +30,12 @@ const Wilder = ({name, city, skills, id, refresh}) => {
 			<ul className={styles.skills}>
 				{skills.map((skill, i) => <Skill key={i} name={skill.title} grade={skill.grade}/>)}
 			</ul>
-			<button onClick={(e)=> setShowUpdate(!showUpdate)}>Update</button>
-			{showUpdate && <UpdateWilder id={id} name={name} city={city} refresh={refresh}/>}
-			<DeleteWilder id={id} refresh={refresh}/>
+			<div className={styles.container}>
+				<button onClick={(e)=> showUpdateHandler()}>Update</button>
+				<DeleteWilder id={id} refresh={refresh}/>
+			</div>
+			{showUpdate && <UpdateWilder id={id} name={name} city={city} refresh={refresh} showUpdateHandler={showUpdateHandler}/>}
+			
 		</article>
 	)
 }

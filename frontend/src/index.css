@@ -38,8 +38,9 @@ h1, h2, h3 {
 
   button {
     color: white;
+    font-size: 1.25em;
     padding: 0.35em 0.5em;
     margin: 0.5em;
     border: 1px solid #ccc;
-    background-color: gray;
+    background-color: #F76C6C;
   }

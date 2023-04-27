@@ -1,8 +1,7 @@
 import axios from "axios";
+import PropTypes from 'prop-types'
 
-const UpdateWilder = ({id, name, city, refresh}) => {
-
-
+const UpdateWilder = ({id, name, city, refresh, showUpdateHandler}) => {
 
 	return (
 		<form onSubmit={(e)=> {
@@ -11,6 +10,7 @@ const UpdateWilder = ({id, name, city, refresh}) => {
 			.then((result)=> {
 				console.log(result);
 				refresh();
+				showUpdateHandler();
 			})
 			.catch((err)=> {
 				console.log(err);
@@ -23,6 +23,14 @@ const UpdateWilder = ({id, name, city, refresh}) => {
 			<button type="submit">Validate modification(s)</button>
 		</form>
 	)
+}
+
+UpdateWilder.propTypes = {
+	id: PropTypes.number.isRequired,
+	name: PropTypes.string.isRequired,
+	city: PropTypes.string,
+	refresh: PropTypes.func.isRequired,
+	showUpdateHandler: PropTypes.func.isRequired
 }
 
 export default UpdateWilder;
