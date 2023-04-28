@@ -1,6 +1,7 @@
 import Wilder from '../../components/Wilder/Wilder';
 import AddWilder from '../../components/AddWilder/AddWilder';
 import styles from'./Home.module.css';
+import PropTypes from 'prop-types';
 
 const Home = ({wildersData, fetchData}) => {
 
@@ -26,5 +27,11 @@ const Home = ({wildersData, fetchData}) => {
 		</main>
 	)
 }
+
+Home.propTypes = {
+  wildersData: PropTypes.array.isRequired,
+  fetchData: PropTypes.func.isRequired
+}
+
 
 export default Home;
