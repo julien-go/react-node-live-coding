@@ -1,0 +1,53 @@
+
+h1, h2, h3 {
+	margin: 0 0 0.35em;
+  }
+   
+  h1 {
+	font-size: 40px;
+  }
+   
+  h2 {
+	font-size: 28px;
+  }
+   
+  h3 {
+	font-size: 20px;
+  }
+   
+  h4 {
+	font-size: 15px;
+  }
+   
+  p {
+	margin: 0 0 1.15em;
+  }
+
+  button {
+    color: white;
+    font-size: 1.25em;
+    padding: 0.35em 0.5em;
+    border-radius: 10%;
+    margin: 0.5em;
+    border: none;
+    background-color: #F76C6C;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap:0.25em;
+    width: 100%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 7px;
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  label {
+    font-weight: bold;
+  }
