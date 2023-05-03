@@ -8,8 +8,8 @@ Content-Type: application/json
 
 {
 	"wilderId" : 3,
-	"skill" : "Node",
-	"grade" : 8
+	"skill" : "React",
+	"grade" : 6
 }
 
 ###
@@ -20,7 +20,7 @@ Content-Type: application/json
 {
 	"wilderId" : 1,
 	"skill" : "React",
-	"grade" : 3
+	"grade" : 10
 }
 
 ###
@@ -29,5 +29,5 @@ DELETE http://localhost:5000/api/grade
 Content-Type: application/json
 
 {
-	"id": 14
+	"id": 2
 }

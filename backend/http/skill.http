@@ -7,7 +7,7 @@ POST http://localhost:5000/api/skill
 Content-Type: application/json
 
 {
-	"name" : "PHP"
+	"name" : "SQL"
 }
 
 ###
@@ -28,5 +28,5 @@ DELETE  http://localhost:5000/api/skill
 Content-Type: application/json
 
 {
-	"id": 7
+	"id": 3
 }
