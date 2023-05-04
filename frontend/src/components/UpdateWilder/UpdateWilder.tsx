@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
+
+import { Path, useForm, UseFormRegister } from "react-hook-form";
 
 interface UpdateWilderProps {
   id: number;
@@ -9,6 +10,27 @@ interface UpdateWilderProps {
   showUpdateHandler: () => void;
 }
 
+interface FormValues {
+  name: string;
+  city: string;
+}
+
+type InputProps = {
+  label: Path<FormValues>;
+  register: UseFormRegister<FormValues>;
+  required: boolean;
+  defaultValue?: string;
+};
+
+const Input = ({ label, register, required, defaultValue }: InputProps) => {
+  return (
+    <>
+      <label>{label}</label>
+      <input {...register(label, { required })} defaultValue={defaultValue} />
+    </>
+  );
+};
+
 const UpdateWilder = ({
   id,
   name,
@@ -16,46 +38,38 @@ const UpdateWilder = ({
   refresh,
   showUpdateHandler,
 }: UpdateWilderProps) => {
-  const [newName, setNewName] = useState<string>(name);
-  const [newCity, setNewCity] = useState<string>(city ? city : "");
+  const { register, handleSubmit } = useForm<FormValues>();
+
+  const onSubmit = (data: FormValues) => {
+    console.log(data);
+    const { name, city } = data;
+    axios
+      .put("http://localhost:5000/api/wilder/update", {
+        id,
+        name,
+        city: city ? city : "",
+      })
+      .then((result) => {
+        console.log(result);
+        refresh();
+        showUpdateHandler();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        axios
-          .put("http://localhost:5000/api/wilder/update", {
-            id: id,
-            name: newName,
-            city: newCity,
-          })
-          .then((result) => {
-            console.log(result);
-            refresh();
-            showUpdateHandler();
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }}
-    >
-      <label htmlFor="name">Name</label>
-      <input
-        type="text"
-        id="name"
-        name="name"
-        value={newName}
-        onChange={(e) => setNewName(e.target.value)}
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <Input label="name" register={register} required defaultValue={name} />
+      <br />
+      <Input
+        label="city"
+        register={register}
+        required={false}
+        defaultValue={city}
       />
-      <label htmlFor="city">City</label>
-      <input
-        type="text"
-        id="city"
-        name="city"
-        value={newCity}
-        onChange={(e) => setNewCity(e.target.value)}
-      />
-      <button type="submit">Validate</button>
+      <button type="submit">Add</button>
     </form>
   );
 };

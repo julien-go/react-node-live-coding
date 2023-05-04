@@ -28,5 +28,5 @@ DELETE  http://localhost:5000/api/skill
 Content-Type: application/json
 
 {
-	"id": 3
+	"id": 6
 }
