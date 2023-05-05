@@ -6,10 +6,13 @@ import { Request, Response } from "express";
 const WilderController = {
   create: async (req: Request, res: Response): Promise<void> => {
     try {
+      console.log(req.body);
       const data = await dataSource.getRepository(Wilder);
-      const wilder =
-        (await req.body.city) === "" ? { name: req.body.name } : req.body;
-      console.log(wilder);
+
+      const wilder = (await (req.body.city !== ""))
+        ? req.body
+        : { name: req.body.name };
+
       await data.save(wilder);
       res.send("Created");
     } catch (err) {
@@ -25,11 +28,10 @@ const WilderController = {
         .find({ relations: { wilder: true, skill: true } });
       const wilders = await dataSource.getRepository(Wilder).find();
       const data = wilders.map((wilder) => {
-        // console.log(wilder);
         const wilderGrades = grades.filter(
           (grade) => grade.wilder.id === wilder.id
         );
-        // console.log(wilderGrades);
+
         const wilderGradesLean = wilderGrades.map((el) => {
           return { title: el.skill.name, grade: el.grade };
         });

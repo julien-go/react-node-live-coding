@@ -5,6 +5,10 @@ import WilderController from "./controller/wilder";
 import SkillController from "./controller/skill";
 import GradeController from "./controller/grade";
 
+import multer from "multer";
+import AvatarController from "./controller/avatar";
+const upload = multer({ dest: "public/uploads/" });
+
 const app = express();
 
 app.use(express.json());
@@ -29,6 +33,8 @@ app.get("/api/grade", GradeController.read);
 app.post("/api/grade", GradeController.create);
 app.put("/api/grade", GradeController.update);
 app.delete("/api/grade", GradeController.delete);
+
+app.post("/api/avatar", upload.single("avatar"), AvatarController.addAvatar);
 
 app.use((req, res, next) => {
   res.status(404).send("Erreur 404: URL not found");

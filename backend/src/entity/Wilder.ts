@@ -12,6 +12,9 @@ export class Wilder {
   @Column({ nullable: true })
   city?: string;
 
+  @Column({ nullable: true })
+  avatar?: string;
+
   @OneToMany(() => Grade, (grade) => grade.wilder, { cascade: true })
   grades: Grade[];
 }
