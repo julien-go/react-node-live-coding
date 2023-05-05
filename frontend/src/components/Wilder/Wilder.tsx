@@ -1,4 +1,4 @@
-import avatar from "../../assets/avatar.png";
+import defaultAvatar from "../../assets/avatar.png";
 import Skill from "../Skill/Skill";
 import styles from "./Wilder.module.css";
 import DeleteWilder from "../DeleteWilder/DeleteWilder";
@@ -10,6 +10,7 @@ import AddGrade from "../AddGrade/AddGrade";
 interface WilderProps {
   name: string;
   city?: string;
+  avatar?: string;
   skills: Array<{ title: string; grade: number }>;
   id: number;
   refresh: () => void;
@@ -21,6 +22,7 @@ const Wilder = ({
   city,
   skills,
   id,
+  avatar,
   refresh,
   skillsData,
 }: WilderProps) => {
@@ -37,7 +39,10 @@ const Wilder = ({
 
   return (
     <article className={styles.card}>
-      <img src={avatar} alt={`${name}'s avatar`} />
+      <img
+        src={avatar ? `http://localhost:5000/uploads/${avatar}` : defaultAvatar}
+        alt={`${name}'s avatar`}
+      />
       <h3>{name}</h3>
       {city && <p>City: {city}</p>}
       <p>

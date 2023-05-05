@@ -22,6 +22,7 @@ const Home = ({ wildersData, skillsData, fetchData }: HomeProps) => {
             id={wilder.id}
             name={wilder.name}
             city={wilder.city}
+            avatar={wilder.avatar}
             skills={wilder.skills}
             skillsData={skillsData}
             refresh={fetchData}

@@ -8,9 +8,12 @@ import { v4 as uuidv4 } from "uuid";
 const AvatarController = {
   addAvatar: async (req: Request, res: Response): Promise<void> => {
     if (req.file != null) {
-      console.log(req.body.id);
-      const { originalname, filename } = req.file;
-      const newName = `${uuidv4()}-${originalname}`;
+      console.log(req.file);
+      const { filename, originalname } = req.file;
+      const extension = originalname.split(".").pop();
+
+      const newName =
+        extension != null ? `${uuidv4()}.${extension}` : `${uuidv4()}`;
 
       fs.rename(
         `public/uploads/${filename}`,
@@ -28,7 +31,7 @@ const AvatarController = {
             } else {
               const modifiedData = await {
                 ...data,
-                avatar: `http://localhost:5000/uploads/${newName}`,
+                avatar: `${newName}`,
               };
 
               await dataSource
