@@ -1,0 +1,17 @@
+FROM node:lts-alpine
+
+RUN mkdir app
+
+WORKDIR /app
+
+COPY package.json ./
+COPY package-lock.json ./
+COPY tsconfig.json ./
+
+RUN npm install -f
+
+COPY wildersdb.sqlite ./
+
+COPY src src
+
+CMD npm start

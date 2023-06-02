@@ -3,7 +3,7 @@ export type WilderType = {
   name: string;
   city?: string;
   avatar?: string;
-  skills: Array<{
+  grades: Array<{
     title: string;
     grade: number;
   }>;
